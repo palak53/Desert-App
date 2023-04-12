@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Dashboard</h2>
+  <p>Total inventory items: {{ total_items }}</p>
+  <p>Low stock items:</p>
+  <ul>
+    {% for item in low_stock_items %}
+      <li>{{ item.name }} ({{ item.stock_quantity }})</li>
+    {% empty %}
+      <li>No low stock items</li>
+    {% endfor %}
+  </ul>
+  <p>Items that need to be reordered:</p>
+  <ul>
+    {% for item in reorder_items %}
+      <li>{{ item.name }}</li>
+    {% empty %}
+      <li>No items need to be reordered</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
